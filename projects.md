@@ -24,7 +24,7 @@ $$
 
 ---
 
-## 2. High-Performance eigenvalue solver
+## 2. (Complex) High-Performance eigenvalue solver
 
 ### Problem statement
 Solve the **eigenvalue problem** efficiently for a large sparse matrix:
@@ -128,3 +128,101 @@ Implement a **parallel matrix multiplication algorithm** to compute $C=A×B$ eff
 - Implement a serial matrix multiplication.
 - Implement an MPI-parallelized version.
 - Compare runtimes for increasing matrix sizes (e.g., $256 \times 256$ to $4096 \times 4096$).
+
+---
+
+## 7. Parallelized numerical integration using trapezoidal rule
+
+### Problem statement
+Implement a **parallelized numerical integration** method using the trapezoidal rule to compute the integral of a function over a given interval.
+
+### Mathematical formulation
+Given a function $f(x)$, approximate the integral over $[a, b]$ as:
+
+$$
+\int_{a}^{b} f(x) \, dx \approx \frac{h}{2} \left( f(a) + 2 \sum_{i=1}^{n-1} f(x_i) + f(b) \right)
+$$
+
+where $h = \frac{b-a}{n}$ and $x_i = a + i \cdot h$.
+
+### Implementation steps
+1. Implement a serial version using NumPy.
+2. Parallelize the computation using Numba (`prange`).
+3. Compare performance for different numbers of intervals $n$.
+4. Test on functions like $f(x) = \sin(x)$ or $f(x) = e^{-x^2}$.
+
+### Expected output
+- Speedup plots (serial vs. parallel).
+- Error analysis vs. number of intervals.
+
+---
+
+## 8. (Complex) Parallelized PageRank Algorithm
+
+### Problem statement
+Implement a **parallelized version of the PageRank algorithm** to rank web pages in a large graph.
+
+### Mathematical formulation
+Given a graph $G = (V, E)$, the PageRank $PR(v)$ of a node $v$ is computed iteratively as:
+
+$$
+PR(v) = \frac{1-d}{N} + d \sum_{u \in M(v)} \frac{PR(u)}{L(u)}
+$$
+
+where $d$ is the damping factor, $N$ is the total number of nodes, $M(v)$ is the set of nodes pointing to $v$, and $L(u)$ is the number of outbound links from $u$.
+
+### Implementation steps
+1. Implement a serial version using NumPy.
+2. Parallelize the iterative updates using Numba or MPI.
+3. Test on synthetic graphs or real-world datasets (e.g., Stanford Web Graph).
+4. Compare convergence rates and runtime.
+
+### Expected output
+- Performance benchmarks (serial vs. parallel).
+- Convergence analysis for different graph sizes.
+
+---
+
+## 9. Parallelized gradient descent for machine learning
+
+### Problem statement
+Implement a **parallelized gradient descent algorithm** for optimizing a machine learning model (e.g., linear regression).
+
+### Mathematical formulation
+Given a loss function $L(\theta)$, update the parameters $\theta$ iteratively as:
+
+$$
+\theta_{t+1} = \theta_t - \eta \nabla L(\theta_t)
+$$
+
+where $\eta$ is the learning rate.
+
+### Implementation steps
+1. Implement a serial gradient descent using NumPy.
+2. Parallelize the gradient computation using Numba or MPI.
+3. Test on synthetic datasets or real-world datasets (e.g., Boston Housing).
+4. Compare convergence rates and runtime.
+
+### Expected output
+- Performance benchmarks (serial vs. parallel).
+- Convergence analysis for different dataset sizes.
+
+---
+
+## 10. Parallelized sparse matrix-vector multiplication
+
+### Problem statement
+Implement a **parallelized sparse matrix-vector multiplication** for large sparse matrices.
+
+### Mathematical formulation
+Given a sparse matrix $A$ and a vector $x$, compute $y = A \cdot x$.
+
+### Implementation steps
+1. Generate a large sparse matrix using `scipy.sparse`.
+2. Implement a serial matrix-vector multiplication.
+3. Parallelize the computation using Numba or MPI.
+4. Compare performance for different matrix sizes.
+
+### Expected output
+- Speedup plots (serial vs. parallel).
+- Memory usage analysis.
