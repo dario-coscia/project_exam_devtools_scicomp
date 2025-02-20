@@ -49,7 +49,7 @@ where $A$ is a symmetric matrix.
 
 ---
 
-## 3. Large-Scale data processing: profiling and optimization
+## 3. (Complex) Large-Scale data processing: profiling and optimization
 
 ### Problem statement
 Optimize **large-scale data processing** operations for a dataset with $10^8$ rows.
@@ -69,7 +69,7 @@ Optimize **large-scale data processing** operations for a dataset with $10^8$ ro
 
 ---
 
-## 4. Parallel K-Means clustering on HPC
+## 4. (Complex) Parallel K-Means clustering on HPC
 
 ### Problem statement
 Optimize **K-Means clustering** for large datasets using parallelization.
@@ -111,3 +111,20 @@ Compare different **parallel sorting algorithms**.
 ### Expected output
 - Performance benchmarks (runtime vs. input size).
 - Profiling report on efficiency.
+
+---
+
+## 6. (Complex) Parallel matrix multiplication using MPI
+
+### Problem statement
+Implement a parallel matrix multiplication algorithm to compute $C=A×B$ efficiently for large matrices.
+
+### Implementation steps
+- Distribute rows of $A$ across MPI processes.
+- Use `mpi4py` to communicate required portions of $B$.
+- Gather results into the final matrix $C$.
+
+### Expected output
+- Implement a serial matrix multiplication.
+- Implement an MPI-parallelized version.
+- Compare runtimes for increasing matrix sizes (e.g., $256 \times 256$ to $4096 \times 4096$).
