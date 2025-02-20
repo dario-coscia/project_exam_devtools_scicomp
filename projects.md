@@ -1,4 +1,8 @@
-# List of avaliable projects for Development Tools for Scientific Computing course
+## 0. A project of your choice, that might be useful for your research!
+
+In this case get in touch with the instructor and the assistant before starting developing your project.
+
+---
 
 ## 1. Parallelized Monte Carlo estimation of $\pi$
 
