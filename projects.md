@@ -13,10 +13,10 @@ $$
 $$
 
 ### Implementation steps
-1. **Naïve NumPy implementation**.
-2. **Parallelized version with Numba (`@njit(parallel=True)`)**.
-3. **GPU-accelerated version using Numba CUDA**.
-4. **Compare performance (runtime, efficiency, and error convergence).**
+1. Naïve NumPy implementation.
+2. Parallelized version with Numba (`@njit(parallel=True)`).
+3. GPU-accelerated version using Numba CUDA.
+4. Compare performance (runtime, efficiency, and error convergence).
 
 ### Expected output
 - Speedup plots (NumPy vs. CPU parallel vs. GPU).
@@ -36,12 +36,12 @@ $$
 where $A$ is a symmetric matrix.
 
 ### Implementation steps
-1. **Generate a large random sparse matrix** using `scipy.sparse`.
-2. **Compare three approaches**:
-   - **Baseline**: NumPy’s `numpy.linalg.eig`.
-   - **Optimized**: SciPy’s `scipy.sparse.linalg.eigs`.
-   - **High-performance**: Custom Numba-based iterative solver.
-3. **Profile runtime and memory usage**.
+1. Generate a large random sparse matrix using `scipy.sparse`.
+2. Compare three approaches:
+   - Baseline: NumPy's `numpy.linalg.eig`.
+   - Optimized: SciPy's `scipy.sparse.linalg.eigs`.
+   - High-performance: Custom Numba-based iterative solver.
+3. Profile runtime and memory usage.
 
 ### Expected output
 - Performance comparison graphs (runtime vs. matrix size).
@@ -55,13 +55,13 @@ where $A$ is a symmetric matrix.
 Optimize **large-scale data processing** operations for a dataset with $10^8$ rows.
 
 ### Implementation steps
-1. **Load and analyze a dataset** (e.g., financial data, sensor logs).
-2. **Profile performance** using `cProfile`, `line_profiler`, and `memory_profiler`.
-3. **Optimize bottlenecks**:
-   - Replace loops with **NumPy vectorization**.
-   - Use **Numba for fast computations**.
-   - Optimize storage: compare **CSV, HDF5, Parquet**.
-4. **Benchmark before and after optimizations**.
+1. Load and analyze a dataset (e.g., financial data, sensor logs).
+2. Profile performance using `cProfile`, `line_profiler`, and `memory_profiler`.
+3. Optimize bottlenecks:
+   - Replace loops with NumPy vectorization.
+   - Use Numba for fast computations.
+   - Optimize storage: compare CSV, HDF5, Parquet.
+4. Benchmark before and after optimizations.
 
 ### Expected output
 - Performance graphs (before vs. after optimization).
@@ -84,10 +84,10 @@ $$
 where $\mu_k$ are cluster centroids.
 
 ### Implementation steps
-1. **Baseline: Naïve K-Means with NumPy**.
-2. **Parallelized version using Numba (`prange`)**.
-3. **GPU-accelerated version using CuPy or PyTorch**.
-4. **Test on large datasets (e.g., MNIST, synthetic Gaussian blobs)**.
+1. Baseline: Naïve K-Means with NumPy.
+2. Parallelized version using Numba (`prange`).
+3. GPU-accelerated version using CuPy or PyTorch.
+4. Test on large datasets (e.g., MNIST, synthetic Gaussian blobs).
 
 ### Expected output
 - Speedup graphs (serial vs. CPU parallel vs. GPU).
@@ -101,12 +101,12 @@ where $\mu_k$ are cluster centroids.
 Compare different **parallel sorting algorithms**.
 
 ### Implementation steps
-1. **Implement different sorting algorithms**:
-   - **Merge Sort (NumPy baseline)**
-   - **Parallel Merge Sort (Numba `prange`)**
-   - **Quicksort with parallel partitioning**
-2. **Compare performance** for large random datasets.
-3. **Profile memory usage and scalability**.
+1. Implement different sorting algorithms:
+   - Merge Sort (NumPy baseline)
+   - Parallel Merge Sort (Numba `prange`)
+   - Quicksort with parallel partitioning
+2. Compare performance for large random datasets.
+3. Profile memory usage and scalability.
 
 ### Expected output
 - Performance benchmarks (runtime vs. input size).
@@ -117,7 +117,7 @@ Compare different **parallel sorting algorithms**.
 ## 6. (Complex) Parallel matrix multiplication using MPI
 
 ### Problem statement
-Implement a parallel matrix multiplication algorithm to compute $C=A×B$ efficiently for large matrices.
+Implement a **parallel matrix multiplication algorithm** to compute $C=A×B$ efficiently for large matrices.
 
 ### Implementation steps
 - Distribute rows of $A$ across MPI processes.
