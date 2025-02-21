@@ -4,31 +4,7 @@ In this case get in touch with the instructor and the assistant before starting 
 
 ---
 
-## 1. Parallelized Monte Carlo estimation of $\pi$
-
-### Problem statement
-Use Monte Carlo methods to estimate $\pi$ efficiently using **parallel computing**.
-
-### Mathematical formulation
-Generate $N$ random points $(x,y) \in [0,1] \times [0,1]$. The fraction of points inside the quarter-circle $x^2 + y^2 \leq 1$ estimates $\pi$ as:
-
-$$
-\pi \approx 4 \times \frac{\text{points inside quarter-circle}}{\text{total points}}
-$$
-
-### Implementation steps
-1. Naïve NumPy implementation.
-2. Parallelized version with Numba (`@njit(parallel=True)`).
-3. GPU-accelerated version using Numba CUDA.
-4. Compare performance (runtime, efficiency, and error convergence).
-
-### Expected output
-- Speedup plots (NumPy vs. CPU parallel vs. GPU).
-- Error analysis vs. number of samples.
-
----
-
-## 2. (Complex) High-Performance eigenvalue solver
+## 1. (Complex) High-Performance eigenvalue solver
 
 ### Problem statement
 Solve the **eigenvalue problem** efficiently for a large sparse matrix:
@@ -53,7 +29,7 @@ where $A$ is a symmetric matrix.
 
 ---
 
-## 3. (Complex) Large-Scale data processing: profiling and optimization
+## 2. (Complex) Large-Scale data processing: profiling and optimization
 
 ### Problem statement
 Optimize **large-scale data processing** operations for a dataset with $10^8$ rows.
@@ -73,7 +49,7 @@ Optimize **large-scale data processing** operations for a dataset with $10^8$ ro
 
 ---
 
-## 4. (Complex) Parallel K-Means clustering on HPC
+## 3. (Complex) Parallel K-Means clustering on HPC
 
 ### Problem statement
 Optimize **K-Means clustering** for large datasets using parallelization.
@@ -99,7 +75,7 @@ where $\mu_k$ are cluster centroids.
 
 ---
 
-## 5. Parallel sorting algorithm benchmark
+## 4. Parallel sorting algorithm benchmark
 
 ### Problem statement
 Compare different **parallel sorting algorithms**.
@@ -118,7 +94,7 @@ Compare different **parallel sorting algorithms**.
 
 ---
 
-## 6. (Complex) Parallel matrix multiplication using MPI
+## 5. (Complex) Parallel matrix multiplication using MPI
 
 ### Problem statement
 Implement a **parallel matrix multiplication algorithm** to compute $C=A×B$ efficiently for large matrices.
@@ -135,33 +111,7 @@ Implement a **parallel matrix multiplication algorithm** to compute $C=A×B$ eff
 
 ---
 
-## 7. Parallelized numerical integration using trapezoidal rule
-
-### Problem statement
-Implement a **parallelized numerical integration** method using the trapezoidal rule to compute the integral of a function over a given interval.
-
-### Mathematical formulation
-Given a function $f(x)$, approximate the integral over $[a, b]$ as:
-
-$$
-\int_{a}^{b} f(x) \mathrm{d}x \approx \frac{h}{2} \left( f(a) + 2 \sum_{i=1}^{n-1} f(x_i) + f(b) \right)
-$$
-
-where $h = \frac{b-a}{n}$ and $x_i = a + i \cdot h$.
-
-### Implementation steps
-1. Implement a serial version using NumPy.
-2. Parallelize the computation using Numba (`prange`).
-3. Compare performance for different numbers of intervals $n$.
-4. Test on functions like $f(x) = \sin(x)$ or $f(x) = e^{-x^2}$.
-
-### Expected output
-- Speedup plots (serial vs. parallel).
-- Error analysis vs. number of intervals.
-
----
-
-## 8. (Complex) Parallelized PageRank Algorithm
+## 6. (Complex) Parallelized PageRank Algorithm
 
 ### Problem statement
 Implement a **parallelized version of the PageRank algorithm** to rank web pages in a large graph.
@@ -187,10 +137,10 @@ where $d$ is the damping factor, $N$ is the total number of nodes, $M(v)$ is the
 
 ---
 
-## 9. Parallelized gradient descent for machine learning
+## 7. Parallelized gradient descent for machine learning
 
 ### Problem statement
-Implement a **parallelized gradient descent algorithm** for optimizing a machine learning model (e.g., linear regression).
+Implement a **parallelized gradient descent algorithm** for optimizing a machine learning model (e.g., linear regression) with $> 5\cdot 10^4$ parameters.
 
 ### Mathematical formulation
 Given a loss function $L(\theta)$, update the parameters $\theta$ iteratively as:
@@ -213,7 +163,7 @@ where $\eta$ is the learning rate.
 
 ---
 
-## 10. Parallelized sparse matrix-vector multiplication
+## 8. Parallelized sparse matrix-vector multiplication
 
 ### Problem statement
 Implement a **parallelized sparse matrix-vector multiplication** for large sparse matrices.
@@ -233,7 +183,7 @@ Given a sparse matrix $A$ and a vector $x$, compute $y = A \cdot x$.
 
 ---
 
-## 11. Efficient Causal Convolutions for Time-Series Forecasting
+## 9. Efficient Causal Convolutions for Time-Series Forecasting
 
 ### Problem statement
 Implement efficient **causal convolutions** for time-series forecasting, optimizing for large input sequences. Causal convolutions ensure that the model only uses past information for predictions, making them suitable for tasks where future data points cannot be accessed. See [WaveNet](https://arxiv.org/abs/1609.03499) for a possible application.
@@ -254,7 +204,7 @@ where $d$ is the filter size (or receptive field) and $x_{t-i}$ are the past inp
 
 ---
 
-## 12. Efficient LSTM/GRU Implementations
+## 10. (Complex) Efficient LSTM/GRU Implementations
 
 ### Problem statement
 Implement efficient versions of **Long Short-Term Memory (LSTM)** and **Gated Recurrent Unit (GRU)**, focusing on reducing computational cost and improving runtime performance for sequence modelling tasks. 
@@ -264,20 +214,36 @@ Implement efficient versions of **Long Short-Term Memory (LSTM)** and **Gated Re
 - **LSTM** has the following key equations:
 
 $$
-i_t = \sigma(W_{ii}x_t + W_{hi}h_{t-1} + b_i) \\
-f_t = \sigma(W_{if}x_t + W_{hf}h_{t-1} + b_f) \\
-o_t = \sigma(W_{io}x_t + W_{ho}h_{t-1} + b_o) \\
-g_t = \tanh(W_{ig}x_t + W_{hg}h_{t-1} + b_g) \\
-c_t = f_t \cdot c_{t-1} + i_t \cdot g_t \\
+i_t = \sigma(W_{ii}x_t + W_{hi}h_{t-1} + b_i)
+$$
+$$
+f_t = \sigma(W_{if}x_t + W_{hf}h_{t-1} + b_f)
+$$
+$$
+o_t = \sigma(W_{io}x_t + W_{ho}h_{t-1} + b_o)
+$$
+$$
+g_t = \tanh(W_{ig}x_t + W_{hg}h_{t-1} + b_g)
+$$
+$$
+c_t = f_t \cdot c_{t-1} + i_t \cdot g_t
+$$
+$$
 h_t = o_t \cdot \tanh(c_t)
 $$
 
 - **GRU** simplifies the gates as:
 
 $$
-z_t = \sigma(W_{iz}x_t + W_{hz}h_{t-1} + b_z) \\
-r_t = \sigma(W_{ir}x_t + W_{hr}h_{t-1} + b_r) \\
-n_t = \tanh(W_{in}x_t + r_t \cdot (W_{hn}h_{t-1}) + b_n) \\
+z_t = \sigma(W_{iz}x_t + W_{hz}h_{t-1} + b_z)
+$$
+$$
+r_t = \sigma(W_{ir}x_t + W_{hr}h_{t-1} + b_r)
+$$
+$$
+n_t = \tanh(W_{in}x_t + r_t \cdot (W_{hn}h_{t-1}) + b_n)
+$$
+$$
 h_t = (1 - z_t) \cdot n_t + z_t \cdot h_{t-1}
 $$
 
@@ -293,7 +259,7 @@ $$
 
 ---
 
-## 13. Efficient minLSTM and minGRU Implementations
+## 11. Efficient minLSTM and minGRU Implementations
 
 ### Problem statement
 Implement efficient **minLSTM** and **minGRU**, which are minimalistic versions of LSTM and GRU designed to reduce computational complexity while maintaining similar performance for sequence modelling.
@@ -312,26 +278,7 @@ Implement efficient **minLSTM** and **minGRU**, which are minimalistic versions 
 
 ---
 
-## 14. Efficient State-Space-Models Implementations
-
-### Problem statement
-Implement efficient **S4** and **S6** layers, which are minimalistic versions of LSTM and GRU designed to reduce computational complexity while maintaining similar performance for sequence modelling.
-
-### Mathematical formulation
-- **minLSTM**, **minGRU** mathematical implementation are reported in [this paper](https://arxiv.org/abs/2410.01201v1).
-
-### Implementation steps
-1. Implement the minLSTM and minGRU architectures in PyTorch.
-2. Optimize their implementations by vectorizing an efficient parallel scan.
-3. Compare minLSTM/minGRU against standard LSTM/GRU in terms of training speed, convergence, and accuracy on datasets like sequential MNIST, time-series data, or NLP tasks.
-
-### Expected output
-- Performance comparison (runtime vs. sequence length).
-- Memory usage profile for different implementations.
-
----
-
-## 15. Implementing Structured State Space Models (S4)
+## 12. (Regular 1-3, Complex 1-4) Implementing Structured State Space Models (S4)
 
 ### Problem statement
 Implement the **Structured State Space (S4/S6) model**, which is an efficient and scalable variant of SSMs designed for modelling long-range dependencies in sequential data. Refer to [this paper](https://arxiv.org/abs/2312.00752) for an overview.
@@ -348,12 +295,9 @@ $$
 ### Implementation steps
 1. Implement the baseline version of S4 by following the mathematical formulation using PyTorch or TensorFlow.
 2. Implement optimizations such as low-rank matrix approximations and using efficient convolutional operations to handle long-range dependencies.
-3. Test the implementation on benchmark datasets like sequential MNIST or long-range forecasting tasks.
-4. Compare the performance (speed, memory, accuracy) of S4 with vanilla SSMs and other sequence models like LSTMs and Transformers.
+3. Compare the performance (speed, memory, accuracy) of S4 with vanilla SSMs and other sequence models like LSTMs and Transformers.
+4. (Complex) Implement with S4/S6 layers the Mamba, H3, and Gated MLP architectures. Test on the selective copy task.
 
 ### Expected output
 - Performance comparison charts (accuracy, training time, memory usage) between S4, SSM, and other models.
 - Analysis of how well the model handles long-range dependencies.
-
----
-
