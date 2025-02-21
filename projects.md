@@ -124,14 +124,14 @@ Compare different **parallel sorting algorithms**.
 Implement a **parallel matrix multiplication algorithm** to compute $C=A×B$ efficiently for large matrices.
 
 ### Implementation steps
+- Implement a serial matrix multiplication.
 - Distribute rows of $A$ across MPI processes.
 - Use `mpi4py` to communicate required portions of $B$.
 - Gather results into the final matrix $C$.
 
 ### Expected output
-- Implement a serial matrix multiplication.
-- Implement an MPI-parallelized version.
-- Compare runtimes for increasing matrix sizes (e.g., $256 \times 256$ to $4096 \times 4096$).
+- Performance benchmarks (serial vs. parallel) for increasing matrix sizes (e.g., $256 \times 256$ to $4096 \times 4096$).
+- Memory usage analysis.
 
 ---
 
@@ -144,7 +144,7 @@ Implement a **parallelized numerical integration** method using the trapezoidal 
 Given a function $f(x)$, approximate the integral over $[a, b]$ as:
 
 $$
-\int_{a}^{b} f(x) \, dx \approx \frac{h}{2} \left( f(a) + 2 \sum_{i=1}^{n-1} f(x_i) + f(b) \right)
+\int_{a}^{b} f(x) \mathrm{d}x \approx \frac{h}{2} \left( f(a) + 2 \sum_{i=1}^{n-1} f(x_i) + f(b) \right)
 $$
 
 where $h = \frac{b-a}{n}$ and $x_i = a + i \cdot h$.
